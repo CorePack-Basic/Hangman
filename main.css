@@ -1,0 +1,334 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+}
+body {
+    font-family: Tahoma , Arial;
+}
+.container {
+    width: 800px;
+    margin: 20px auto;
+}
+.container .game-info {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 20px;
+    margin-bottom: 5px;
+}
+.game-type span {
+    color: red;
+    text-transform: capitalize;
+}
+.row {
+    display: flex;
+    height: 300px;
+    gap: 20px;
+}
+.draw-hang {
+    background-color: #f8f8f8;
+    flex: 1;
+    position: relative;
+   
+}
+.draw-hang .hang-stand {
+    display: none;
+}
+.draw-hang.wrong-1 .hang-stand {
+    display: block;
+}
+.draw-hang .hang-stand::before {
+    content: "";
+    position: absolute;
+    bottom: 30px;
+    left: 10%;
+    width: 60px;
+    height: 4px;
+    background-color: black;
+}
+.hang-rope::before {
+    content: "";
+    position: absolute;
+    bottom: 30px;
+    left: calc(10% + 30px);
+    width: 4px;
+    height: 210px;
+    background-color: black;
+    display: none;
+}
+.draw-hang.wrong-2 .hang-rope::before {
+    display: block;
+}
+.hand-top-stand::before {
+    content: "";
+    position: absolute;
+    bottom: 220px;
+    width: 130px;
+    height: 4px;
+    background-color: black;
+    left: calc(10% + 30px);
+    display: none;
+}
+.draw-hang.wrong-3 .hand-top-stand::before {
+    display: block;
+}
+.hand-top-stand::after {
+    content: "";
+    position: absolute;
+    bottom: calc(220px - 36px);
+    width: 4px;
+    height: 40px;
+    left: calc(10% + 160px);
+    background-color: black;
+    display: none;
+}
+.draw-hang.wrong-4 .hand-top-stand::after {
+    display: block;
+}
+.body-man {
+    content: "";
+    position: absolute;
+    bottom: calc(220px - 95px);
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    left: calc(10% + 133px);
+    border-style: dashed;
+    display: none;
+}
+.draw-hang.wrong-5 .body-man {
+    display: block;
+}
+.body-man::before {
+    content: "";
+    position: absolute;
+    bottom: 11%;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    left: 11%;
+    border-style: solid;
+    display: none;
+}
+.draw-hang.wrong-6 .body-man::before {
+    display: block;
+}
+.leg-man {
+    content: "";
+    position: absolute;
+    bottom: calc(220px - 173px);
+    width: 4px;
+    height: 80px;
+    left: calc(10% + 160px);
+    background-color: black;
+    display: none;
+}
+.draw-hang.wrong-7 .leg-man {
+    display: block;
+}
+.hand-man {
+    content: "";
+    position: absolute;
+    bottom: calc(220px - 148px);
+    width: 4px;
+    height: 52px;
+    left: calc(10% + 138px);
+    background-color: black;
+    transform: rotate(300deg);
+    display: none;
+}
+.draw-hang.wrong-8 .hand-man {
+    display: block;
+}
+.hand-man-two {
+    content: "";
+    position: absolute;
+    bottom: calc(220px - 148px);
+    width: 4px;
+    height: 52px;
+    left: calc(10% + 182px);
+    background-color: black;
+    transform: rotate(-300deg);
+    display: none;
+}
+.draw-hang.wrong-9 .hand-man-two {
+    display: block;
+}
+.leg-one {
+    content: "";
+    position: absolute;
+    bottom: calc(220px - 211px);
+    width: 4px;
+    height: 52px;
+    left: calc(10% + 182px);
+    background-color: black;
+    transform: rotate(300deg);
+    display: none;
+}
+.draw-hang.wrong-10 .leg-one {
+    display: block;
+}
+.leg-two {
+    content: "";
+    position: absolute;
+    bottom: calc(220px - 211px);
+    width: 4px;
+    height: 52px;
+    left: calc(10% + 139px);
+    background-color: black;
+    transform: rotate(-300deg);
+    display: none;
+}
+.draw-hang.wrong-11 .leg-two {
+    display: block;
+}
+.letters {
+    flex: 1;   
+    text-align: center;
+    padding: 15px;
+}
+.letters.stop {
+    pointer-events: none;
+}
+.span-letter {
+    width: 45px;
+    height: 45px;
+    display: inline-block;
+    background-color: #009688;
+    line-height: 45px;
+    margin-bottom: 10px;
+    margin-right: 10px;
+    text-transform: capitalize;
+    color: #fff;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.letter-guess {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    margin: 10px auto;
+    min-height: 94px;
+    background-color: #f8f8f8;
+}
+
+.letter-guess span {
+    width: 50px;
+    height: 50px;
+    background-color: #FDFDFD;
+    margin-left: 10px;
+    font-size: 25px;
+    text-transform: capitalize;
+    position: relative;
+    border-bottom: 3px solid #222;
+    text-align: center;
+    line-height: 50px;
+}
+
+span.with-space {
+    position: relative;
+    background: none;
+    border-bottom: none;
+}
+span.with-space::before {
+    content: "";
+    position: absolute;
+    width: 20px;
+    height: 2px;
+    background: #009688;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50% , -50%);
+}
+
+.clicked {
+    background-color: #222;
+    opacity: .2;
+    pointer-events: none;
+}
+
+.finished { 
+    text-align: center;
+    padding: 10px 0;
+    background: #222;
+    color: white;
+    font-size: 20px;
+}
+
+.finished  span {
+    color: red;
+}
+
+
+
+/* CSS */
+.button-85 {
+    padding: 0.8em 4em;
+    border: none;
+    outline: none;
+    color: rgb(255, 255, 255);
+    background: #111;
+    cursor: pointer;
+    position: relative;
+    z-index: 0;
+    border-radius: 10px;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    margin: 28px auto;
+    display: block;
+}
+
+.button-85:before {
+  content: "";
+  background: linear-gradient(
+    45deg,
+    #ff0000,
+    #ff7300,
+    #fffb00,
+    #48ff00,
+    #00ffd5,
+    #002bff,
+    #7a00ff,
+    #ff00c8,
+    #ff0000
+  );
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  background-size: 400%;
+  z-index: -1;
+  filter: blur(5px);
+  -webkit-filter: blur(5px);
+  width: calc(100% + 4px);
+  height: calc(100% + 4px);
+  animation: glowing-button-85 20s linear infinite;
+  transition: opacity 0.3s ease-in-out;
+  border-radius: 10px;
+}
+
+@keyframes glowing-button-85 {
+  0% {
+    background-position: 0 0;
+  }
+  50% {
+    background-position: 400% 0;
+  }
+  100% {
+    background-position: 0 0;
+  }
+}
+
+.button-85:after {
+  z-index: -1;
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #222;
+  left: 0;
+  top: 0;
+  border-radius: 10px;
+}
